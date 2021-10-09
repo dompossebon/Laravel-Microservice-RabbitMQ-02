@@ -1,18 +1,15 @@
-# Curso Laravel Microservices com RabbitMQ (micro 02)
-[Saiba Mais Sobre o Curso](https://academy.especializati.com.br/curso/laravel-microservices-micro-02)
-
-## Requisitos
-Este microservice 02 depende do microservice 01, portanto, primeiramente subir o [microservice 01](https://github.com/especializati/laravel-microservice-01)
+# Laravel Microservices com RabbitMQ (micro 02)
+Micro02 - Laravel Microservices com RabbitMQ - Dockerizado - nginx:alpine - mysql:5.7.22 - redis:latest
 
 ### Instalação
 Clonar Projeto
 ```sh
-git clone https://github.com/especializati/laravel-microservice-02.git
+git clone https://github.com/dompossebon/Laravel-Microservice-RabbitMQ-02.git micro-02
 ```
 
 Acessar o projeto
 ```sh
-cd laravel-microservice-02
+cd micro-02
 ```
 
 Criar o Arquivo .env
@@ -22,7 +19,6 @@ cp .env.example .env
 
 Atualizar as variáveis de ambiente do arquivo .env
 ```dosini
-APP_NAME=EspecializaTi
 APP_URL=http://localhost:8001
 
 DB_CONNECTION=mysql
@@ -30,15 +26,16 @@ DB_HOST=db_micro_02
 DB_PORT=3306
 DB_DATABASE=micro_02
 DB_USERNAME=root
-DB_PASSWORD=root
+DB_PASSWORD=345678
 
 CACHE_DRIVER=redis
 QUEUE_CONNECTION=redis
 SESSION_DRIVER=redis
 
-REDIS_HOST=redis
+REDIS_HOST=redis_micro_02
 REDIS_PASSWORD=null
 REDIS_PORT=6379
+
 ```
 
 Subir os containers do projeto
