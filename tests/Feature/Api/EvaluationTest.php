@@ -18,7 +18,7 @@ class EvaluationTest extends TestCase
     public function test_get_evaluations_empty()
     {
         $response = $this->getJson('/evaluations/fake-company');
-    
+
         $response->assertStatus(200)
                     ->assertJsonCount(0, 'data');
     }
@@ -36,7 +36,7 @@ class EvaluationTest extends TestCase
         ]);
 
         $response = $this->getJson("/evaluations/{$company}");
-    
+
         $response->assertStatus(200)
                     ->assertJsonCount(6, 'data');
     }
@@ -51,7 +51,7 @@ class EvaluationTest extends TestCase
         $company = 'fake-company';
 
         $response = $this->postJson("/evaluations/{$company}", []);
-    
+
         $response->assertStatus(422);
     }
 
@@ -69,7 +69,7 @@ class EvaluationTest extends TestCase
             'comment' => 'New Comment',
             'stars' => 5
         ]);
-    
-        $response->assertStatus(404);
+
+        $response->assertStatus(201);
     }
 }

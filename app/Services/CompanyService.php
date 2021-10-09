@@ -2,7 +2,9 @@
 
 namespace App\Services;
 
-use Carlosfgti\MicroservicesCommon\Services\Traits\ConsumeExternalService;
+//use Carlosfgti\MicroservicesCommon\Services\Traits\ConsumeExternalService;
+
+use App\Services\Traits\ConsumeExternalService;
 
 class CompanyService
 {
@@ -19,6 +21,10 @@ class CompanyService
 
     public function getCompany(string $company)
     {
-        return $this->request('get', "/companies/{$company}");
+        $teste =  $this->request('get', "/companies/{$company}");
+
+        dd($teste->body());
+
+        return $teste;
     }
 }

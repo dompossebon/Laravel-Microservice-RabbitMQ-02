@@ -19,6 +19,7 @@ class EvaluationController extends Controller
     {
         $this->repository = $model;
         $this->companyService = $companyService;
+
     }
 
     /**
@@ -27,6 +28,9 @@ class EvaluationController extends Controller
      */
     public function index($company)
     {
+        $response = $this->companyService->getCompany($company);
+
+
         $evaluations = $this->repository->where('company', $company)->get();
 
         return EvaluationResource::collection($evaluations);
@@ -39,20 +43,26 @@ class EvaluationController extends Controller
      */
     public function store(StoreEvaluation $request, $company)
     {
+
         $response = $this->companyService->getCompany($company);
 
+
         $status = $response->status();
-        if ($status != 200) {
-            return response()->json([
-                'message' => 'Invalid Company'
-            ], $status);
-        }
-        $company = json_decode($response->body());
+
+
+//        if ($status != 200) {
+//
+//            return response()->json([
+//                'message' => 'Invalid Company'
+//            ], $status);
+//        }
+//
+//        $company = json_decode($response->body());
 
         $evaluation = $this->repository->create($request->validated());
 
 
-        EvaluationCreated::dispatch($company->data->email)->onQueue('queue_email');
+//        EvaluationCreated::dispatch($company->data->email)->onQueue('queue_email');
 
         return new EvaluationResource($evaluation);
     }
