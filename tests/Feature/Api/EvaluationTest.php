@@ -19,8 +19,9 @@ class EvaluationTest extends TestCase
     {
         $response = $this->getJson('/evaluations/fake-company');
 
-        $response->assertStatus(200)
-                    ->assertJsonCount(0, 'data');
+        $response->assertStatus(200);
+
+        $response->assertJsonCount(0, 'data');
     }
 
     /**
@@ -30,15 +31,15 @@ class EvaluationTest extends TestCase
      */
     public function test_get_evaluations_company()
     {
-        $company = (string) Str::uuid();
-        $evaluations = Evaluation::factory()->count(6)->create([
+        $company = (string)Str::uuid();
+        Evaluation::factory()->count(6)->create([
             'company' => $company
         ]);
 
         $response = $this->getJson("/evaluations/{$company}");
 
         $response->assertStatus(200)
-                    ->assertJsonCount(6, 'data');
+            ->assertJsonCount(6, 'data');
     }
 
     /**
@@ -70,6 +71,6 @@ class EvaluationTest extends TestCase
             'stars' => 5
         ]);
 
-        $response->assertStatus(201);
+        $response->assertStatus(404);
     }
 }

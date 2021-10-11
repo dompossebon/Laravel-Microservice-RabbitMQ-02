@@ -29,15 +29,15 @@ class EvaluationController extends Controller
      */
     public function index($company)
     {
-        $response = $this->companyService->getCompany($company);
-
-        $status = $response->status();
-
-        if ($status != 200) {
-            return response()->json([
-                'message' => 'Invalid Company'
-            ], $status);
-        }
+//        $response = $this->companyService->getCompany($company);
+//
+//        $status = $response->status();
+//
+//        if ($status != 200) {
+//            return response()->json([
+//                'message' => 'Invalid Company'
+//            ], $status);
+//        }
 
         $evaluations = $this->repository->where('company', $company)->get();
 
