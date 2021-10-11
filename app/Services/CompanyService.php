@@ -2,7 +2,9 @@
 
 namespace App\Services;
 
-use App\Services\Traits\ConsumeExternalService;
+
+
+use Dompossebon\MicroservicesCommon\Services\Traits\ConsumeExternalService;
 
 class CompanyService
 {
